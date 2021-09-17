@@ -17,7 +17,7 @@ import {
 
 import {Auth, API, graphqlOperation } from 'aws-amplify';
 
-import { createTeaser } from '../graphql/mutations';
+import { createPost } from '../graphql/mutations';
 import { useHistory } from 'react-router';
 import { red } from '@material-ui/core/colors';
 
@@ -64,7 +64,7 @@ export default function Sidebar({activeListItem}) {
   };
 
   const onPost = async () => {
-    const res = await API.graphql(graphqlOperation(createTeaser, { input: {
+    const res = await API.graphql(graphqlOperation(createPost, { input: {
       type: 'post',
       content: value,
       timestamp: Math.floor(Date.now() / 1000),
