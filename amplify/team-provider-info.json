@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-konfy-dev-123254-authRole",
+      "UnauthRoleArn": "arn:aws:iam::108793859000:role/amplify-konfy-dev-123254-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::108793859000:role/amplify-konfy-dev-123254-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-konfy-dev-123254-deployment",
+      "UnauthRoleName": "amplify-konfy-dev-123254-unauthRole",
+      "StackName": "amplify-konfy-dev-123254",
+      "StackId": "arn:aws:cloudformation:eu-central-1:108793859000:stack/amplify-konfy-dev-123254/3e640ef0-179a-11ec-824b-0addcd80aba4",
+      "AmplifyAppId": "d3isz5i4h1nwcg"
+    },
+    "categories": {
+      "auth": {
+        "konfy19c1e8b9": {}
+      }
+    }
+  }
+}

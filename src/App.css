@@ -3,8 +3,42 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.teaserList {
+  display: flex;
+  flex-direction: column;
+}
+
+.teaserCard {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.teaserTitle {
+  font-weight: bold;
+}
+
+.ourVideoPlayer{
+     height: 480px;
+     width: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,7 +47,9 @@
   }
 }
 
-.App-header {
+.MuiDrawer-paperAnchorDockedLeft{background: #15202B !important;;}
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -26,7 +62,7 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
