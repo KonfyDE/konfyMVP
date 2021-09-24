@@ -1,0 +1,109 @@
+/**
+ I'm using them BEM naming convetion (http://getbem.com/introduction/)
+ While I could use Tailwind/Bootstrap/..., since the design is rather unconvetional, IMO it wouldn't benfit from it
+ */
+
+main {
+    padding: 4rem 2rem;
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.signup-cards {
+    display: flex;
+}
+
+.signup-card {
+    position: relative;
+    flex: 1 0 50%;
+    min-width: 50%;
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+}
+
+.signup-card--inactive {
+    opacity: 0;
+    z-index: 0;
+}
+
+.signup-card__knowledge {
+    --offset: 100%;
+}
+
+.signup-card__expert {
+    --offset: -100%;
+}
+
+.signup-card__overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: var(--illustration-height); /* 56.25%; */
+    background: transparent;
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.5, -0.210, 0.5, 1.210);
+}
+
+.signup__illustration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.signup-card--active .signup-card__overlay {
+    z-index: 2;
+    transform: translateX(var(--offset));
+}
+
+.signup-card__form {
+    position: relative;
+    z-index: 2;
+    padding: 8.8vh 0 0; /* fixme: remove magic number */
+}
+
+.signup-section + .signup-section {
+    margin-top: 5rem;
+}
+
+.signup-button__wrapper {
+    margin-top: 2rem;
+}
+
+.signup-card__button {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    padding: calc(var(--illustration-height) + 4rem) 0 4rem;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+}
+
+.signup-card__button--enter,
+.signup-card__form--enter {
+    opacity: 0;
+}
+
+.signup-card__button--enter-active,
+.signup-card__form--enter-active {
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+}
+
+.signup-card__button--exit,
+.signup-card__form--exit {
+    opacity: 1;
+}
+
+.signup-card__button--exit-active,
+.signup-card__form--exit-active {
+    opacity: 0;
+    transition: opacity 700ms ease-in-out;
+}

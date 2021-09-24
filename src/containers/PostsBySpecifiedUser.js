@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 
-import {API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 import { useParams } from 'react-router';
 
 import { listPostsBySpecificOwner } from '../graphql/queries';
@@ -18,9 +18,9 @@ const reducer = (state, action) => {
     case INITIAL_QUERY:
       return action.posts;
     case ADDITIONAL_QUERY:
-      return [...state, ...action.posts]
+      return [...state, ...action.posts];
     case SUBSCRIPTION:
-      return [action.post, ...state]
+      return [action.post, ...state];
     default:
       return state;
   }
@@ -34,23 +34,24 @@ export default function PostsBySpecifiedUser() {
   const [isLoading, setIsLoading] = useState(true);
 
   const getPosts = async (type, nextToken = null) => {
-    const res = await API.graphql(graphqlOperation(listPostsBySpecificOwner, {
-      owner: userId,
-      sortDirection: 'DESC',
-      limit: 20,
-      nextToken: nextToken,
-    }));
+    const res = await API.graphql(
+      graphqlOperation(listPostsBySpecificOwner, {
+        owner: userId,
+        sortDirection: 'DESC',
+        limit: 20,
+        nextToken: nextToken,
+      }),
+    );
     console.log(res);
-    dispatch({ type: type, posts: res.data.listPostsBySpecificOwner.items })
+    dispatch({ type: type, posts: res.data.listPostsBySpecificOwner.items });
     setNextToken(res.data.listPostsBySpecificOwner.nextToken);
     setIsLoading(false);
-  }
+  };
 
   const getAdditionalPosts = () => {
     if (nextToken === null) return; //Reached the last page
     getPosts(ADDITIONAL_QUERY, nextToken);
-  }
-
+  };
 
   useEffect(() => {
     getPosts(INITIAL_QUERY);
@@ -60,23 +61,15 @@ export default function PostsBySpecifiedUser() {
         const post = msg.value.data.onCreatePost;
         if (post.owner !== userId) return;
         dispatch({ type: SUBSCRIPTION, post: post });
-      }
+      },
     });
     return () => subscription.unsubscribe();
   }, []);
 
-
   return (
     <React.Fragment>
-      <Sidebar 
-        activeListItem='profile'
-      />
-      <PostList
-        isLoading={isLoading}
-        posts={posts}
-        getAdditionalPosts={getAdditionalPosts}
-        listHeaderTitle={userId}
-      />
+      <Sidebar activeListItem="profile" />
+      <PostList isLoading={isLoading} posts={posts} getAdditionalPosts={getAdditionalPosts} listHeaderTitle={userId} />
     </React.Fragment>
-  )
+  );
 }

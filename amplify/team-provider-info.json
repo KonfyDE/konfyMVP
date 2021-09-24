@@ -9,12 +9,8 @@
       "UnauthRoleName": "amplify-konfy-dev-123254-unauthRole",
       "StackName": "amplify-konfy-dev-123254",
       "StackId": "arn:aws:cloudformation:eu-central-1:108793859000:stack/amplify-konfy-dev-123254/3e640ef0-179a-11ec-824b-0addcd80aba4",
-      "AmplifyAppId": "d3isz5i4h1nwcg"
-    },
-    "categories": {
-      "auth": {
-        "konfy19c1e8b9": {}
-      }
+      "AmplifyAppId": "d3isz5i4h1nwcg",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-konfy-dev-123254-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     }
   }
 }

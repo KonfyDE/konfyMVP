@@ -72,3 +72,139 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* General */
+:root {
+  --color-primary: #fd4445;
+  --color-primary-highlight: #c43334;
+  --color-black: #05383f;
+
+  --page-width: 1200px;
+
+  --illustration-height: min(80vh, 85%);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+body {
+  background-color: #fff;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-highlight);
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 3rem;
+  margin: 0 0 0.25rem;
+}
+
+input {
+  font: inherit;
+  border: 0 none;
+  border-bottom: 1px var(--color-black) solid;
+  accent-color: var(--color-primary)
+}
+
+input:focus {
+  outline: 0 none;
+  border-bottom-color: var(--color-primary-highlight);
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+/* Design System */
+.btn {
+  text-decoration: none;
+  background-color: transparent;
+  font: inherit;
+  line-height: 1.3rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 0.25rem 2rem;
+  min-width: 10ch;
+  border: 2px transparent solid;
+}
+
+.btn:focus {
+  outline: 0 none;
+  box-shadow: 0 0 0 4px var(--color-primary-highlight);
+}
+
+a.btn, a.btn:hover {
+  text-decoration: none;
+}
+
+.btn--big {
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  border-radius: 1.625rem
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: var(--color-primary-highlight);
+  border-color: var(--color-primary-highlight);
+}
+
+.btn-secondary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  color: var(--color-primary-highlight);
+  border-color: var(--color-primary-highlight);
+}
+
+.form-row + .form-row {
+  margin-top: 1rem;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

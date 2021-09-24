@@ -1,21 +1,10 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  TextField,
-  ListItemIcon,
-} from '@material-ui/core';
-import {
-  Person as PersonIcon,
-  Public as PublicIcon,
-} from '@material-ui/icons';
+import { Button, Drawer, List, ListItem, ListItemIcon, ListItemText, TextField } from '@material-ui/core';
+import { Person as PersonIcon, Public as PublicIcon } from '@material-ui/icons';
 
-import {Auth, API, graphqlOperation } from 'aws-amplify';
+import { API, Auth, graphqlOperation } from 'aws-amplify';
 
 import { createPost } from '../graphql/mutations';
 import { useHistory } from 'react-router';
@@ -24,7 +13,7 @@ import { red } from '@material-ui/core/colors';
 const drawerWidth = 340;
 const MAX_POST_CONTENT_LENGTH = 140;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -44,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Sidebar({activeListItem}) {
+export default function Sidebar({ activeListItem }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -52,7 +41,7 @@ export default function Sidebar({activeListItem}) {
   const [isError, setIsError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('');
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValue(event.target.value);
     if (event.target.value.length > MAX_POST_CONTENT_LENGTH) {
       setIsError(true);
@@ -64,21 +53,25 @@ export default function Sidebar({activeListItem}) {
   };
 
   const onPost = async () => {
-    const res = await API.graphql(graphqlOperation(createPost, { input: {
-      type: 'post',
-      content: value,
-      timestamp: Math.floor(Date.now() / 1000),
-    }})); 
+    const res = await API.graphql(
+      graphqlOperation(createPost, {
+        input: {
+          type: 'post',
+          content: value,
+          timestamp: Math.floor(Date.now() / 1000),
+        },
+      }),
+    );
 
-    console.log(res)
+    console.log(res);
     setValue('');
-  }
+  };
 
   const signOut = () => {
     Auth.signOut()
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
-  }
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Drawer
@@ -87,8 +80,7 @@ export default function Sidebar({activeListItem}) {
       classes={{
         paper: classes.drawerPaper,
       }}
-      anchor="left"
-    >
+      anchor="left">
       <div className={classes.toolbar} />
       <List>
         <ListItem
@@ -97,10 +89,9 @@ export default function Sidebar({activeListItem}) {
           onClick={() => {
             Auth.currentAuthenticatedUser().then((user) => {
               history.push('/global-timeline');
-            })
+            });
           }}
-          key='global-timeline'
-        >
+          key="global-timeline">
           <ListItemIcon>
             <PublicIcon />
           </ListItemIcon>
@@ -112,57 +103,52 @@ export default function Sidebar({activeListItem}) {
           onClick={() => {
             Auth.currentAuthenticatedUser().then((user) => {
               history.push('/' + user.username);
-            })
+            });
           }}
-          key='profile'
-        >
+          key="profile">
           <ListItemIcon>
             <PersonIcon />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItem>
-        <ListItem key='post-input-field'>
-          <ListItemText primary={
-            <TextField
-              error={isError}
-              helperText={helperText}
-              id="post-input"
-              label="Type your post!"
-              multiline
-              rowsMax="8"
-              variant="filled"
-              value={value}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-            />
-          } />
+        <ListItem key="post-input-field">
+          <ListItemText
+            primary={
+              <TextField
+                error={isError}
+                helperText={helperText}
+                id="post-input"
+                label="Type your post!"
+                multiline
+                rowsMax="8"
+                variant="filled"
+                value={value}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+              />
+            }
+          />
         </ListItem>
-        <ListItem key='post-button'>
-          <ListItemText primary={
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={isError}
-              onClick={onPost}
-              fullWidth
-            >
-              Post
-            </Button>
-          } />
+        <ListItem key="post-button">
+          <ListItemText
+            primary={
+              <Button variant="contained" color="primary" disabled={isError} onClick={onPost} fullWidth>
+                Post
+              </Button>
+            }
+          />
         </ListItem>
-        <ListItem key='logout'>
-          <ListItemText primary={
-            <Button
-              variant="outlined"
-              onClick={signOut}
-              fullWidth
-            >
-              Logout
-            </Button>
-          } />
+        <ListItem key="logout">
+          <ListItemText
+            primary={
+              <Button variant="outlined" onClick={signOut} fullWidth>
+                Logout
+              </Button>
+            }
+          />
         </ListItem>
       </List>
     </Drawer>
-  )
+  );
 }
