@@ -18,7 +18,7 @@ class WhereBy extends Component {
         if (this.state.success)
             content = <iframe src={this.state.room_url}></iframe>
         else if (this.state.error)
-            content = <div>ERROR!</div>
+            content = <div>Whereby API ERROR!</div>
         else
             content = <div>Loading Meeting</div>
         return (
