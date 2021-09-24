@@ -1,0 +1,6 @@
+{
+  "lambdaLayers": [],
+  "secretNames": [
+    "WHEREBY_API_KEY"
+  ]
+}

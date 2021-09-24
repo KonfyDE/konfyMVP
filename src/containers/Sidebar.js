@@ -13,6 +13,7 @@ import {
 import {
   Person as PersonIcon,
   Public as PublicIcon,
+  PersonalVideo as PersonalVideoIcon,
 } from '@material-ui/icons';
 
 import {Auth, API, graphqlOperation } from 'aws-amplify';
@@ -120,6 +121,21 @@ export default function Sidebar({activeListItem}) {
             <PersonIcon />
           </ListItemIcon>
           <ListItemText primary="Profile" />
+        </ListItem>
+        <ListItem
+            button
+            selected={activeListItem === 'start-whereby-meeting'}
+            onClick={() => {
+              Auth.currentAuthenticatedUser().then((user) => {
+                history.push('/start-whereby-meeting');
+              })
+            }}
+            key='start-whereby-meeting'
+        >
+          <ListItemIcon>
+            <PersonalVideoIcon />
+          </ListItemIcon>
+          <ListItemText primary="Start Whereby Meeting" />
         </ListItem>
         <ListItem key='post-input-field'>
           <ListItemText primary={

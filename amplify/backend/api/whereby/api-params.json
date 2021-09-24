@@ -1,0 +1,38 @@
+{
+  "paths": [
+    {
+      "name": "/create-meeting",
+      "lambdaFunction": "createWherebyMeeting",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/GET"
+        ]
+      },
+      "policyResourceName": "/create-meeting"
+    }
+  ],
+  "resourceName": "whereby",
+  "apiName": "whereby",
+  "functionArns": [
+    {
+      "lambdaFunction": "createWherebyMeeting"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-konfy-dev-123254-authRole",
+    "unAuthRoleName": "amplify-konfy-dev-123254-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "createWherebyMeeting",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

@@ -14,6 +14,13 @@
     "categories": {
       "auth": {
         "konfy19c1e8b9": {}
+      },
+      "function": {
+        "createWherebyMeeting": {
+          "secretsPathAmplifyAppId": "d3isz5i4h1nwcg",
+          "deploymentBucketName": "amplify-konfy-dev-123254-deployment",
+          "s3Key": "amplify-builds/createWherebyMeeting-46697155516930797955-build.zip"
+        }
       }
     }
   }

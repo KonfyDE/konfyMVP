@@ -22,6 +22,7 @@ import {
   } from 'react-router-dom';
   import AllPosts from './containers/AllPosts';
 import PostsBySpecifiedUser from './containers/PostsBySpecifiedUser';
+import WhereBy from "./components/StartWherebyMeeting";
 
 
 
@@ -204,6 +205,7 @@ return authState === AuthState.SignedIn && user ? (
           <Switch>
             <Route exact path='/' component={AllPosts} />
             <Route exact path='/global-timeline' component={AllPosts} />
+            <Route exact path='/start-whereby-meeting' component={WhereBy} />
             <Route exact path='/:userId' component={PostsBySpecifiedUser}/>
             <Redirect path="*" to="/" />
           </Switch>
