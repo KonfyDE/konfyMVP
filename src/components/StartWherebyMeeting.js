@@ -16,7 +16,7 @@ class WhereBy extends Component {
     render() {
         let content;
         if (this.state.success)
-            content = <iframe src={this.state.room_url}></iframe>
+            content = <iframe allow={"camera; microphone; fullscreen; speaker; display-capture"} style={{width: "100%"}} src={this.state.room_url}></iframe>
         else if (this.state.error)
             content = <div>Whereby API ERROR!</div>
         else
